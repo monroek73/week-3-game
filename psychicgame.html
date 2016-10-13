@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<meta charset="UTF-8">
+<html lang="en">
+
+<head>
+
+
+<t> Kim's Psychic Game</t>
+
+
+
+</head>
+
+<body>
+
+<div id="game">
+
+<h1>The Pyschic Game<h1>
+
+<h2>Guess what letter I'm thinking of<h2/>
+
+ <script type="text/javascript">   
+
+        // reduce the number of guesses left by one
+
+        // get the user input as a lower case letter
+
+        // add the guess to the an array of guessed letters
+
+        // update html for guesses made and number of guesses (created Ids)
+
+        // if there are still guesses left:
+            // check for a match
+                // if matching, update win count and html
+                // reset the game
+
+        // if there are no guesses left
+
+            // update loss count and html
+
+            // reset the game -->
+
+
+//Prompt user to guess letter//
+var userGuess = prompt("Choose a letter from 'a' to 'z'");	
+
+//Random Letters Computer can guess		
+
+var computerChoice = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s", "t", "u", "v","x","y","z"];
+
+//variables//
+
+var loss = 0;
+var wins = 0;
+var guessLeft = 10;
+var totalGuesses=[];
+var computerGuess = computerChoice [Math.floor(Math.random()*computerChoice.length)];
+// var guessMade = 0;
+
+function startGame(){
+	guessLeft =10;
+	computerGuess[Math.floor(Math.random()*computerChoice.length)];
+	totalGuesses =[];
+}
+
+document.onkeyup = function(event){
+guessLeft--;
+
+var userGuess = String.fromCharCode(event.keycode).toLowerCase();
+
+console.log('user guess', userGuess);
+console.log('computer guess',computerGuess);
+console.log(guessLeft);
+totalGuesses.push(userGuess);
+console.log(totalGuesses);
+updatedGuess(userGuess);
+
+if (userGuess == computerGuess){
+	win++; 
+	startGame();
+	alert("Correct Answer");
+	confirm("Choose Again");
+}
+
+if(guessLeft<1){
+	loss++;
+	startGame();
+	confirm("Choose Again");
+}
+}
+
+function updatedGuess(userGuess){
+	document.querySelector('#game').innerHTML = "you choose" + userGuess +
+	"<p> Wins" +
+	wins + 
+	"</p>" +
+	"<p> Loss" +
+	loss +
+	"</p>" +
+	"<p> Guess Left" +
+     guessLeft +
+	"</p>" +
+	"<p> Guesses So Far" +
+	totalGuesses +
+	"</p>";
+}	  
+
+
+</script>
+	
+</body>
+</html>
